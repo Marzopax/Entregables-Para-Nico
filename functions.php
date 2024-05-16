@@ -1,26 +1,64 @@
 <?php
 
+// Creamos la funcion
 function mostrarValores($valor1, $valor2){
 
+    // Creamos una funcion que sea un array
     $ordenados = array();
 
-    if ($valor1 >= 1 and $valor2 <= 100) {
+    // Creamos un IF para verificar que los valores enviados esten entre 1 y 100
+    if ($valor1 >= 1 and $valor1 <= 100 and $valor2 <= 100 and $valor2 >= 1) {
         
-        for ($i = $valor1; $i <= $valor2; $i++) {
+        // Luego tenemos la segunda verificacion para ver si el primer valor es menor al segundo 
+        if ($valor1 <= $valor2) {
 
-            $ordenados[] = $i;
+            // Igualamos $i al numero del $valor1 y como $i es menor sumara hasta llegar al valor que tenga $valor2
+            for ($i = $valor1; $i <= $valor2; $i++) {
+
+                // En $ordenados guardamos los numeros del mas chico al mas grande
+                $ordenados[] = $i;
+
+                // Damos vuelta el array y lo guardamos en $alreves
+                $alreves = array_reverse($ordenados);
+
+            }
+
+            // Ambos print_r van por fuera del for sino nos mostraria el array cada vez que se ejecute una vuelta en el bucle
+            // Mostramos los valores del mas chico al mas grande
+            print_r($ordenados);
+
+            // Mostramos los numeros dados vueltas que estaban guardados en $alreves
+            print_r($alreves);
+
+        // Aca decimos que si $valor1 es mayor a $valor2 haga lo que esta adentro del else{}
+        } else {
             
+        // Si $valor2 es menor que $valor1 (como dice arriba), en este caso el bucle sumara de 1 en 1 hasta alcanzar el valor de $valor1
+        for ($i = $valor2; $i <= $valor1; $i++) { 
+            
+            // Guardamos los valores del mas chico a mas grande en un array
+            $ordenados[] = $i;
+
+            // Damos vuelta el array
+            $alreves = array_reverse($ordenados);
+
+        }
+
+            // Ambos print_r van por fuera del for sino nos mostraria el array cada vez que se ejecute una vuelta en el bucle
+            // Mostramos primero del mas grande al mas chico, ya que la condicion del else{} es esa
+            print_r($alreves);
+
+            // Luego mostramos los valores ordenados al final
+            print_r($ordenados);
         }
         
-        print_r($ordenados);
-        $alreves = array_reverse($ordenados);
-        print_r($alreves);
-        
+    // Si $valores1 y $valores$ no estan entre 1 y 100 mustra el mensaje que esta adentro del else{}
     } else {
         echo "Valor ingresado no valido";
     }
 
 }
+mostrarValores(1, 10);
 
 
 function multiplos1($tabla, $multiplo){
